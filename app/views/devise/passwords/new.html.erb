@@ -1,0 +1,28 @@
+<div class="columns is-centered">
+  <div class="card m-6 column is-one-quarter p-0">
+    <div class="card-header">
+      <h2 class="card-header-title">Forgot your password?</h2>      
+    </div>
+
+    <div class="card-content">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <p><%= f.label :username, class: "label is-small" %>
+          <%= f.text_field :username, class: "input" %></p>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Send reset email", class: "column is-full py-2 button is-primary" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card-footer">
+      <%= link_to "Login", new_user_session_path, class: "card-footer-item" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "card-footer-item" %>
+    </div>
+  </div>
+</div>
+
