@@ -11,47 +11,9 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar hero">
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <% if current_user %>
-              <a class="navbar-item">Welcome</a>
-            <% end %>
-            <a class="navbar-item">New</a>
-            <% if current_user %>
-              <a class="navbar-item">Threads</a>
-            <% end %>
-            <a class="navbar-item">Past</a>
-            <a class="navbar-item">Comments</a>
-            <a class="navbar-item">Ask</a>
-            <a class="navbar-item">Show</a>
-            <a class="navbar-item">Jobs</a>
-            <a class="navbar-item">Submit</a>
-          </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <% if current_user %>
-                  <%= link_to current_user.username || current_user.email, edit_user_registration_path, class: "button is-outlined is-dark" %>
-                  <%= link_to "Logout", destroy_user_session_path, class: "button", method: :delete %>
-                <% else %>
-                  <%= link_to "Sign Up", new_user_registration_path, class: "button is-light" %>
-                  <%= link_to "Login", new_user_session_path, class: "button is-light" %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <% if notice.present? %>
-      <div class="notification is-link is-light"><%= notice %></div>
-    <% end %>
-
-    <% if alert.present? %>
-      <div class="notification is-danger is-light"><%= alert %></div>
-    <% end %>
-    <%= yield %>
+    <div class="container">
+      <%= render "shared/header" %>
+      <%= yield %>
+    </div>
   </body>
 </html>

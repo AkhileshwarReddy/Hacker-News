@@ -1,0 +1,7 @@
+<% @submissions.each do |submission| %>
+    <% unless submission.url == nil or submission.url == "" %>
+        <p><%= link_to "#{submission.title} (#{get_host(submission.url)})", submission.url, target: "_blank" %></p>
+    <% else %>
+        <p><%= submission.title %></p>
+    <% end %>
+<% end %>

@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :submissions
   
   attr_writer :login
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true

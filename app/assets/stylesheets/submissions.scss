@@ -1,0 +1,44 @@
+// Place all the styles related to the submissions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.submission-form {
+    // margin: 1rem auto;
+    padding: 1rem;
+    color: gray;
+}
+
+.submission-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.submission-form form label {
+    text-transform: lowercase;
+    margin: 0 .5rem;
+}
+
+.submission-form form input {
+    padding: 2px;
+}
+
+.submission-form form div {
+    display: grid;
+    grid-template-columns: 50px 450px;
+    margin-top: .3rem;
+}
+
+.submission-form form input[type="submit"] {
+    width: 20%;
+}
+
+.submit-info {
+    margin: 1rem 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.submit-info p {
+    margin-top: .5rem;
+    font-size: .9rem;
+}

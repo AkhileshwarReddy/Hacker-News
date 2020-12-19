@@ -1,37 +1,26 @@
-<div class="columns is-centered">
-  <div class="card column is-one-quarter p-0 m-6">
-    <div class="card-header">
-      <p class="card-header-title is-centered">Login</p>
-    </div>
+<h2>Log in</h2>
 
-    <div class="card-content">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <p><%# f.label :login, class: "label" %>
-          <label class="label" for="user_login">Username or Email</label>
-          <%= f.text_field :login, class: "input" %></p>
-        </div>
-
-        <div class="field">
-          <%= f.label :password, class: "label" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
-        </div>
-
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me, class: "checkbox" %>
-          </div>
-        <% end %>
-
-        <div class="actions">
-          <%= f.submit "Log in", class: "button column is-full py-2 is-dark" %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="card-footer">
-      <%= link_to "Forgot password?", new_password_path(resource_name), class: "card-footer-item" %>
-    </div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :login %><br />
+    <%= f.text_field :login %>
   </div>
-</div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
