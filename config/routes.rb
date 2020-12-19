@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get "/submit", to: "submissions#new"
   post "/submissions/create", to: "submissions#create"
   get "/newest", to: "submissions#newest"
+  get "/user", to: "users#user"
+  patch "/user", to: "users#update"
 end
