@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker News FAQ</title>
+
+    <style>
+        .container {
+            width: 40%;
+            margin: 3% auto;
+            background: #efefef;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        h1, h2 {
+            font-size: .9rem;
+        }
+
+        p {
+            font-size: .8rem;
+            line-height: 1.5rem;
+        }
+
+        .content {
+            margin: .2rem;
+        }
+
+        hr {
+            background: #ff6600;
+            border: 1px solid #ff6600;
+            margin-bottom: 5%;
+        }
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./ycombinator.gif">
+        <div class="content">
+            <h1>Hacker News FAQ</h1>
+
+            <h2>Are there rules about submissions and comments?</h2>
+            <p><a href="https://news.ycombinator.com/newsguidelines.html">https://news.ycombinator.com/newsguidelines.html</a></p>
+
+            <h2>How are stories ranked?</h2>
+            <p>The basic algorithm divides points by a power of the time since a story was submitted. Comments in threads are ranked the same way.</p>
+            <p>Other factors affecting rank include user flags, anti-abuse software, software which demotes overheated discussions, account or site weighting, and moderator action.</p>
+
+            <h2>How is a user's karma calculated?</h2>
+            <p>Roughly, the number of upvotes on their posts minus the number of downvotes. These don't match up exactly. Some votes are dropped by anti-abuse software.</p>
+
+            <h2>Do posts by users with more karma rank higher?</h2>
+            <p>No.</p>
+
+            <h2>Why don't I see down arrows?</h2>
+            <p>There are no down arrows on stories. They appear on comments after users reach a certain karma threshold, but never on direct replies.</p>
+
+            <h2>What kind of formatting can you use in comments?There are no down arrows on stories. They appear on comments after users reach a certain karma threshold, but never on direct replies.</h2>
+            <p><a href="http://news.ycombinator.com/formatdoc">http://news.ycombinator.com/formatdoc</a></p>
+
+            <h2>How do I submit a question?</h2>
+            <p>Use the submit link in the top bar, and leave the url field blank.</p>
+
+            <h2>How do I submit a poll?</h2>
+            <p><a>http://news.ycombinator.com/newpoll</a></p>
+
+            <h2>How do I make a link in a text submission?</h2>
+            <p>You can't. This is to prevent people from submitting a link with their comments in a privileged position at the top of the page. If you want to submit a link with comments, just submit it, then add a regular comment.</p>
+
+            <h2>What are Ask HN and Show HN?</h2>
+            <p>Ask HN lists questions and other text submissions. Show HN is for sharing your personal work and has special rules.</p>
+
+            <h2>Why hasn't my submission appeared on Ask HN or Show HN?</h2>
+            <p>All submissions appear on newest, and all Show HNs on shownew, but there is a small points threshold before a post appears on ask or show.</p>
+
+            <h2>What does [flagged] mean?</h2>
+            <p>It means that users flagged a post as breaking the guidelines or otherwise not belonging on Hacker News.</p>
+            <p>Moderators sometimes add [flagged] for the same reasons, and sometimes turn flags off when they are unfair.</p>
+
+            <h2>How do I flag a comment?</h2>
+            <p>Click on its timestamp to go to its page, then click the 'flag' link at the top. There's a small karma threshold before flag links appear.</p>
+
+            <h2>Are reposts ok?</h2>
+            <p>If a story has not had significant attention in the last year or so, a small number of reposts is ok. Otherwise we bury reposts as duplicates.</p>
+            <p>Please don't delete and repost the same story. Deletion is for things that shouldn't have been submitted in the first place.</p>
+
+            <h2>Are paywalls ok?</h2>
+            <p>It's ok to post stories from sites with paywalls that have workarounds.</p>
+            <p>In comments, it's ok to ask how to read an article and to help other users do so. But please don't post complaints about paywalls. Those are off topic. More here.</p>
+
+            <h2>Can I ask people to upvote my submission?</h2>
+            <p>No. Users should vote for a story because they personally find it intellectually interesting, not because someone has content to promote.</p>
+            <p>HN's software penalizes submissions, accounts, and sites that break this rule, so please don't.</p>
+
+            <h2>Can I ask people to comment on my submission?</h2>
+            <p>No, for the same reason. It's also not in your interest. HN readers are sensitive to this, and they will detect it, flag it, and use unkind words like 'spam'.</p>
+
+            <h2>Can I post a job ad?</h2>
+            <p>Please don't post job ads as submissions to HN.</p>
+            <p>A regular "Who Is Hiring?" thread appears on the first weekday of each month (or Jan 2). Most job ads are welcome there. Only an account called whoishiring is allowed to submit the thread itself. This prevents a race to post it first.</p>
+            <p>Another kind of job ad is reserved for YC-funded startups. These appear on the front page, but are not stories: they have no vote arrows, points, or comments. They begin part-way down and fall steadily. Only one is on the front page at a time. The rest are listed at jobs.</p>
+
+            <h2>What's the relationship between YC and HN?</h2>
+            <p>Y Combinator owns and funds HN. The HN team is separate from YC's investment business and is editorially independent.</p>
+            <p>HN gives three features to YC: job ads (see above) and startup launches get placed on the front page, and YC founder names are displayed to other YC alumni in orange.</p>
+
+            <h2>Are negative stories about YC suppressed on HN?</h2>
+            <p>No, we moderate less, not more, when YC or a YC startup is the topic. The good faith of the community is worth more than any story.</p>
+
+            <h2>Why can't I post a comment to a thread?</h2>
+            <p>Threads are closed to new comments after two weeks, or if the submission has been killed by software, moderators, or user flags.</p>
+
+            <h2>Why is A ranked below B even though A has more points and is newer?</h2>
+            <p>You can't derive rank from votes and time alone. See "How are stories ranked?" above.</p>
+
+            <h2>In my profile, what does showdead do?</h2>
+            <p>If you turn it on, you'll see all the stories and comments that have been killed by software, moderators, or user flags.</p>
+            <p>If you see a [dead] post that shouldn't be dead, you can vouch for it. When enough users do this, the post is unkilled. Click on its timestamp to go to its page, then click 'vouch' at the top. There's a small karma threshold before vouch links appear.</p>
+
+            <h2>In my profile, what is delay?</h2>
+            <p>It gives you time to edit your comments before they appear to others. Set it to the number of minutes you'd like. The maximum is 10.</p>
+
+            <h2>In my profile, what is noprocrast?</h2>
+            <p>It's a way to help you prevent yourself from spending too much time on HN. If you turn it on you'll only be allowed to visit the site for maxvisit minutes at a time, with gaps of minaway minutes in between. The defaults are 20 and 180, which would let you view the site for 20 minutes at a time, and then not allow you back in for 3 hours.</p>
+
+            <h2>How do I reset my password?</h2>
+            <p>If you have an email address in your profile, you can do that here. If you haven't, email hn@ycombinator.com for help.</p>
+
+            <h2>Can I change my username?</h2>
+            <p>Yes. Email hn@ycombinator.com and we'll help.</p>
+
+            <h2>Can I delete my account?</h2>
+            <p>We try not to delete entire account histories because that would gut the threads the account had participated in and is unfair to commenters who replied. However, we care about protecting individual users and take care of privacy requests every day, so if we can help, please email hn@ycombinator.com. We don't want anyone to get in trouble from anything they posted to HN. More here.</p>
+
+            <h2>My IP address seems to be banned. How can I unban it?</h2>
+            <p>If you request many pages too quickly, your IP address might get banned. This self-serve unbanning procedure works most of the time. If not, email hn@ycombinator.com.</p>
+        </div>
+    </div>
+</body>
+</html>

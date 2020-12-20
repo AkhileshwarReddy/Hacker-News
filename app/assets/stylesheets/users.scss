@@ -41,3 +41,11 @@
     font-size: .85rem;
     color: gray;
 }
+
+@media (max-width: 768px) {
+    .profile-form form div {
+        display: grid;
+        grid-template-columns: 15% 85%;
+        margin-top: .5rem;
+    }    
+}

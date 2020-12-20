@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker News Security</title>
+    <style>
+        .container {
+            width: 40%;
+            margin: 3% auto;
+            background: #efefef;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        h1, h2 {
+            font-size: .9rem;
+        }
+
+        p, li {
+            font-size: .8rem;
+            line-height: 1.5rem;
+        }
+
+        .content {
+            margin: .2rem;
+        }
+
+        hr {
+            background: #ff6600;
+            border: 1px solid #ff6600;
+            margin-bottom: 5%;
+        }
+
+        a {
+            color: black;
+        }
+
+        li {
+            margin-left: 5%;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <img src="./ycombinator.gif"/>
+        <div class="content">
+            <h1>Hacker News Security</h1>
+            
+            <p>If you find a security hole, please let us know at <a href="mailto:security@ycombinator.com">security@ycombinator.com</a>. We try to respond (with fixes!) as soon as possible, and really appreciate the help.</p>
+            <p>Thanks to the following people who have discovered and responsibly disclosed security holes in Hacker News:</p>
+            
+            <h2>2017-04-30: Michael Flaxman</h2>
+            <p><li>The minor version of bcrypt used for passwords was susceptible to a collision in some cases.</li></p>
+            
+            <h2>2017-04-14: Blake Rand</h2>
+            <p><li>Links in comments were vulnerable to an IDN homograph attack.</li></p>
+
+            <h2>2017-03-15: Blake Rand</h2>
+            <p><li>The right-to-left override character could be used to obscure link text in comments.</li></p>
+
+            <h2>2017-03-01: Jaikishan Tulswani</h2>
+            <p><li>Logged-in users could bypass 'old password' form field.</li></p>
+
+            <h2>2016-02-17: Eric Tjossem</h2>
+            <p><li>Logout and login were vulnerable to CSRF.</li></p>
+
+            <h2>2016-01-13: Mert Taşçi</h2>
+            <p><li>The 'forgot password' link was vulnerable to reflected XSS.</li></p>
+
+            <h2>2015-09-07: Sandeep Singh</h2>
+            <p><li>An open redirect was possible by passing a URL with a mixed-case protocol as the goto parameter.</li></p>
+
+            <h2>2015-09-04: Manish Bhattacharya</h2>
+            <p><li>The site name display for stories was vulnerable to an IDN homograph attack.</li></p>
+
+            <h2>2015-08-27: Chris Marlow</h2>
+            <p><li>Revisions to HN's markup caused an HTML injection regression.</li></p>
+
+            <h2>2015-06-24: Stephen Sclafani</h2>
+            <p><li>A form handling bug led to a XSS vulnerability using HTTP parameter polution.</li></p>
+
+            <h2>2015-03-02: Max Bond</h2>
+            <p><li>Information leaked during /r processing allowed an attacker to discover valid profile edit links and the user for which they were valid.</li></p>
+            <p><li>goto parameters functioned as open redirects.</li></p>
+
+            <h2>2014-11-01: Ovidiu Toader</h2>
+            <p><li>In rare cases some users' profiles (including email addresses and password hashes) were mistakenly published to the Firebase API. More here.</li></p>
+
+            <h2>2014-10-27: San Tran</h2>
+            <p><li>Some pages displaying forms were vulnerable to reflected XSS when provided malformed query string arguments.</li></p>
+
+            <h2>2014-05-01: Jonathan Rudenberg</h2>
+            <p><li>Some YC internal pages were vulnerable to persistent XSS.</li></p>
+
+            <h2>2012-08-01: Louis Lang</h2>
+            <p><li>Redirects were vulnerable to HTTP response splitting via the whence argument.</li></p>
+            <p><li>Persistent XSS could be achieved via the X-Forwarded-For header.</li></p>
+
+            <h2>2012-07-20: Michael Borohovski</h2>
+            <p><li>Incorrect handling of unauthenticated requests meant anyone could change rsvp status for Demo Day.</li></p>
+
+            <h2>2010-01-12: Zain Memon</h2>
+            <p><li>Someone creating a new account could sometimes take an existing username.</li></p>
+
+            <h2>2009-06-03: Daniel Fox Franke</h2>
+            <p><li>The state of the PRNG used to generate cookies could be determined from observed outputs. This allowed an attacker to fairly easily determine valid user cookies and compromise accounts. More here.</li></p>
+            <p><b>Missing From This List?</b> If you reported a vulnerability to us and don't see your name, please shoot us an email and we'll happily add you. We crawled through tons of emails trying to find all reports but inevitably missed some.</p>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>

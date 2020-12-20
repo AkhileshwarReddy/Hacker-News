@@ -1,3 +1,4 @@
+<%= render partial: "shared/title-header", locals: {header_title: "Submit"} %>
 <div class="submission-form">
     <%= form_with model: @submission, url: submissions_create_url do |f| %>
         <div>

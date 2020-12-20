@@ -12,7 +12,8 @@
 
   <body>
     <div class="container">
-      <%= render "shared/header" %>
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
       <%= yield %>
     </div>
   </body>
