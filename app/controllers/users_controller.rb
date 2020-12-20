@@ -6,7 +6,6 @@ class UsersController < ApplicationController
         @no_such_user = false
         if params[:id] == nil
             @no_such_user = true
-            flash[:notice] = "No such user"
         else
             if user_signed_in? and params[:id] == current_user.username
                 @user = current_user
