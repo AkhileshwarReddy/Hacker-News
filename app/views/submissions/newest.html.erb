@@ -1,9 +1,10 @@
 <%= render "shared/header" %>
-<% @submissions.each do |submission| %>
-    <% unless submission.url == nil or submission.url == "" %>
-        <p><%= link_to "#{submission.title} (#{get_host(submission.url)})", submission.url, target: "_blank" %></p>
-    <% else %>
-        <p><%= submission.title %></p>
+<div class="submissions">
+    <% @submissions.each_with_index do |submission, index| %>
+        <div class="submission-partial">
+            <p class="submission-index"><%= index + 1 %>.</p>
+            <%= render partial: "shared/submission", locals: {submission: submission} %>
+        </div>
     <% end %>
-<% end %>
+</div>
 <%= render "shared/footer" %>

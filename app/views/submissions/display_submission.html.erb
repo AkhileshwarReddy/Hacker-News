@@ -1,0 +1,10 @@
+<%= render "shared/header" %>
+    <div class="submissions">
+        <% if @no_such_item %>
+            <p>No such item</p>
+        <% else %>
+            <%= render partial: "shared/submission", locals: {submission: @submission} %>
+        <% end %>
+        
+    </div>
+<%= render "shared/footer" %>

@@ -42,3 +42,69 @@
     margin-top: .5rem;
     font-size: .9rem;
 }
+
+// Submission partial
+
+.submission-title {
+    font-size: .9rem;
+}
+
+.submission-url, .submission-url a {
+    font-size: .8rem;
+    color: gray;
+}
+
+box-icon {
+    height: 20px;
+    width: 10px;
+    
+}
+
+.submissions {
+    margin: 1rem .5rem;
+}
+
+.submission {
+    display: flex;
+    align-items: flex-start;
+    margin: .2rem .1rem;
+}
+
+.submission-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 .2rem;
+}
+
+.submission-ops {
+    margin: .1rem 0;
+    display: flex;
+    font-size: .6rem;
+    letter-spacing: .05ch;
+    margin-top: .2rem;
+}
+
+.submission-ops p, .submission-ops a {
+    color: gray;
+}
+
+.submission-ops a:hover, .submission-url a:hover {
+    text-decoration: underline;
+}
+
+.submission-partial {
+    display: flex;
+    margin: 0 .5rem;
+    padding: 0;
+}
+
+.submission-index {
+    color: gray;
+    font-size: .9rem;
+    margin-top: .2rem;
+}
+
+.current-user-item {
+    color: red;
+    opacity: .6;
+}

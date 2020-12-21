@@ -20,6 +20,18 @@ class SubmissionsController < ApplicationController
         @submissions = Submission.newest
     end
 
+    def display_submission
+        @no_such_item = false
+        if params[:id] == nil
+            @no_such_item = true
+        else
+            @submission = Submission.find(params[:id])
+            if @submission == nil
+                @no_such_item = true
+            end
+        end
+    end
+
     private
         def submission_params
             params.require(:submission).permit(:title, :url, :text);

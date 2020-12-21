@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "/newest", to: "submissions#newest"
   get "/user", to: "users#user"
   patch "/user", to: "users#update"
+  get "/item", to: "submissions#display_submission"
 end

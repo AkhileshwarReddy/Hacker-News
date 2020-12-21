@@ -1,0 +1,32 @@
+<div class="submission">
+    <%= link_to "#" do %>
+        <% if submission.user.id == current_user.id %>
+            <p class="current-user-item">*</p>
+        <% else %>
+            <box-icon type='solid' color=  'gray' name='up-arrow'></box-icon>
+        <% end %>
+    <% end %>
+    <div class="submission-container">
+        <% unless submission.url == nil or submission.url == "" %>
+            <p class="submission-title"><%= link_to submission.title, submission.url, target: "_blank" %>
+            <span class="submission-url">(<%= link_to get_host(submission.url), submission.url %>)</span></p>
+        <% else %>
+            <p class="submission-title"><%= link_to submission.title, item_path(:id => submission.id) %></p>
+        <% end %>
+        <div class="submission-ops">
+            <p><%= "#{submission.upvotes} #{submission.upvotes > 1 ? "points" : "point"} by" %>
+            <%= link_to submission.user.username, user_path(:id => submission.user.username) %>
+            <%= link_to "#{time_ago_in_words(submission.created_at)} ago", item_path(:id => submission.id) %> |
+            <%= link_to "hide", "#" %> |
+            <%= link_to "past", "#" %>
+            <% if request.path != item_path %>
+               | <%= link_to "discuss", item_path(:id => submission.id) %>
+            <% end %>
+            <% if request.url != root_url %>
+                | <%= link_to "favourite", "#" %> |
+                <%= link_to "0 comments", "#" %>
+            <% end %>
+            </p> 
+        </div>
+    </div>
+</div>
