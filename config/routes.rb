@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get "/user", to: "users#user"
   patch "/user", to: "users#update"
   get "/item", to: "submissions#display_submission"
+  post "/comment/create", to: "comments#create"
 end

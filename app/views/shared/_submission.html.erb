@@ -18,14 +18,17 @@
             <%= link_to submission.user.username, user_path(:id => submission.user.username) %>
             <%= link_to "#{time_ago_in_words(submission.created_at)} ago", item_path(:id => submission.id) %> |
             <%= link_to "hide", "#" %> |
-            <%= link_to "past", "#" %>
-            <% if request.path != item_path %>
-               | <%= link_to "discuss", item_path(:id => submission.id) %>
-            <% end %>
+            <%= link_to "past", "#" %> |
+
             <% if request.url != root_url %>
-                | <%= link_to "favourite", "#" %> |
-                <%= link_to "0 comments", "#" %>
+                <%= link_to "favourite", "#" %> |
             <% end %>
+
+            <% if submission.comments.count == 0 %>
+                <%= link_to "discuss", item_path(:id => submission.id) %>
+            <% else %>
+                <%= link_to "#{submission.comments.count} #{submission.comments.count > 1 ? "comments" : "comment"}", item_path(:id => submission.id) %>
+            <%end%>
             </p> 
         </div>
     </div>

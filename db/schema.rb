@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_21_052204) do
+ActiveRecord::Schema.define(version: 2020_12_21_090427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "parent_comment_id"
+    t.text "content"
+    t.integer "upvotes"
+    t.uuid "user_id", null: false
+    t.uuid "submission_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["submission_id"], name: "index_comments_on_submission_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "submissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
@@ -53,5 +65,7 @@ ActiveRecord::Schema.define(version: 2020_12_21_052204) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "comments", "submissions"
+  add_foreign_key "comments", "users"
   add_foreign_key "submissions", "users"
 end

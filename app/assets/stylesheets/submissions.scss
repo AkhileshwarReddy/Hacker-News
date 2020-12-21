@@ -45,8 +45,13 @@
 
 // Submission partial
 
-.submission-title {
+.submission-title, .submission-text {
     font-size: .9rem;
+}
+
+.submission-text {
+    color: gray;
+    padding: .7rem;
 }
 
 .submission-url, .submission-url a {
@@ -107,4 +112,20 @@ box-icon {
 .current-user-item {
     color: red;
     opacity: .6;
+}
+
+.comment-form {
+    margin: 1rem;
+}
+
+.comment-form form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.comment-form input[type="submit"] {
+    margin: .5rem 0;
+    padding: 2px;
+    width: 20%;
 }

@@ -6,10 +6,21 @@ class SubmissionsController < ApplicationController
     end
 
     def create
-        @submission = Submission.new(submission_params)
+        if !submission_params[:url].empty? and !submission_params[:text].empty?
+            @submission = Submission.new(submission_params.except(:text))
+            @comment = Comment.new(content: submission_params[:text])
+            @comment.user = current_user
+        else
+            @submission = Submission.new(submission_params)
+        end
+        
         @submission.user = current_user
         
         if @submission.save
+            if @comment
+                @comment.submission = @submission
+                @comment.save
+            end
             redirect_to :root
         else
             render 'new'
@@ -25,6 +36,7 @@ class SubmissionsController < ApplicationController
         if params[:id] == nil
             @no_such_item = true
         else
+            @comment = Comment.new
             @submission = Submission.find(params[:id])
             if @submission == nil
                 @no_such_item = true
