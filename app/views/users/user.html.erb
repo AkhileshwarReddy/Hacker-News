@@ -65,7 +65,7 @@
             
             <div>
                 <div></div>
-                <%= link_to "submissions", "#" %>
+                <%= link_to "submissions", submitted_path(:id => @user.username) %>
             </div>
             
             <div>
@@ -79,7 +79,7 @@
             
                 <div>
                     <div></div>
-                    <%= link_to "hidden", "#" %>
+                    <%= link_to "hidden", hidden_path %>
                 </div>
 
                 <div>

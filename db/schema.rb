@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_21_090427) do
+ActiveRecord::Schema.define(version: 2020_12_21_150055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_12_21_090427) do
     t.uuid "submission_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_flagged", default: false
     t.index ["submission_id"], name: "index_comments_on_submission_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -36,6 +37,9 @@ ActiveRecord::Schema.define(version: 2020_12_21_090427) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "upvotes", default: 1
+    t.boolean "is_showhn", default: false
+    t.boolean "is_askhn", default: false
+    t.boolean "is_flagged", default: false
     t.index ["user_id"], name: "index_submissions_on_user_id"
   end
 
@@ -48,11 +52,11 @@ ActiveRecord::Schema.define(version: 2020_12_21_090427) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
-    t.uuid "hidden_submissions", array: true
-    t.uuid "upvoted_submissions", array: true
-    t.uuid "upvoted_comments", array: true
-    t.uuid "favorite_submissions", array: true
-    t.uuid "favorite_comments", array: true
+    t.uuid "hidden_submissions", default: [], array: true
+    t.uuid "upvoted_submissions", default: [], array: true
+    t.uuid "upvoted_comments", default: [], array: true
+    t.uuid "favorite_submissions", default: [], array: true
+    t.uuid "favorite_comments", default: [], array: true
     t.integer "karma", default: 0
     t.text "about"
     t.boolean "showdead", default: false

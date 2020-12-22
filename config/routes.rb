@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   patch "/user", to: "users#update"
   get "/item", to: "submissions#display_submission"
   post "/comment/create", to: "comments#create"
+  get "/hide", to: "submissions#hide"
+  get "/hidden", to: "submissions#hidden"
+  get "/ask", to: "submissions#askhn"
+  get "/show", to: "submissions#showhn"
+  get "/shownew", to: "submissions#shownew"
+  get "/submitted", to: "submissions#submitted"
 end

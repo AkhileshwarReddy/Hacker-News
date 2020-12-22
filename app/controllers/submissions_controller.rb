@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create]
+    before_action :authenticate_user!, only: [:new, :create, :hidden_submissions]
+    before_action :set_submission, only: [:hide]
 
     def new
         @submission = Submission.new
@@ -15,6 +16,9 @@ class SubmissionsController < ApplicationController
         end
         
         @submission.user = current_user
+
+        @submission.is_showhn = @submission.title.start_with?("Show HN:")
+        @submission.is_askhn = @submission.title.start_with?("Ask HN:");
         
         if @submission.save
             if @comment
@@ -28,7 +32,11 @@ class SubmissionsController < ApplicationController
     end
 
     def newest
-        @submissions = Submission.newest
+        if user_signed_in?
+            @submissions = Submission.newest.where.not(id: current_user.hidden_submissions)
+        else
+            @submissions = Submission.newest
+        end
     end
 
     def display_submission
@@ -44,8 +52,63 @@ class SubmissionsController < ApplicationController
         end
     end
 
+    def hide
+        if params[:how] == "un"
+            current_user.hidden_submissions.delete(@submission.id)
+        else
+            current_user.hidden_submissions.push(@submission.id)
+        end
+
+        if current_user.save
+            redirect_to hidden_path if params[:how] == "un" else newest_path
+        end
+    end
+
+    def hidden
+        @no_hidden_items = false
+        if current_user.hidden_submissions.count > 0
+            @submissions = Submission.where(id: current_user.hidden_submissions)
+        else
+            @no_such_item = true
+        end
+    end
+
+    def askhn
+        @submissions = Submission.newest.where(is_askhn: true)
+    end
+
+    def showhn
+        @submissions = Submission.newest.where(is_showhn: true)
+    end
+
+    def past
+        # @submissions = Submission.by_date(params[:day])
+    end
+
+    def shownew
+        @submissions = Submission.newest
+    end
+
+    def submitted
+        @no_such_user = false
+        if params[:id] == nil
+            @no_such_user = true
+        else
+            @user = User.find_by(username: params[:id])
+            if @user == nil
+                @no_such_user = true
+            else
+                @submissions = @user.submissions.order(created_at: :desc)
+            end
+        end
+    end
+    
     private
         def submission_params
             params.require(:submission).permit(:title, :url, :text);
+        end
+
+        def set_submission
+            @submission = Submission.find(params[:id])
         end
 end
