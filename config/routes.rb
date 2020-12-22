@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   get "/show", to: "submissions#showhn"
   get "/shownew", to: "submissions#shownew"
   get "/submitted", to: "submissions#submitted"
+  get "/vote", to: "votes#vote"
+  get "/upvoted", to: "votes#upvoted"
 end

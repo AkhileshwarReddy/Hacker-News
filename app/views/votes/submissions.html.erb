@@ -1,6 +1,6 @@
-<%= render partial: "shared/header", locals: {custom_header: "hidden"} %>
-<% if @no_such_items %>
-    <p>No such items</p>
+<%= render partial: "shared/header", locals: {custom_header: "upvoted"} %>
+<% if @no_such_user %>
+    <p>No such user.</p>
 <% else %>
     <div class="submissions">
         <% @submissions.each_with_index do |submission, index| %>

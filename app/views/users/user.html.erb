@@ -84,7 +84,7 @@
 
                 <div>
                     <div></div>
-                    <p><%= link_to "upvoted submissions", "#" %> / <%= link_to "comments", "#" %> <em>(private)</em></p>
+                    <p><%= link_to "upvoted submissions", upvoted_path(:id => current_user.username) %> / <%= link_to "comments", upvoted_path(:comment => "t") %> <em>(private)</em></p>
                 </div>
                 
                 <div>

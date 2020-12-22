@@ -58,14 +58,14 @@ class SubmissionsController < ApplicationController
         else
             current_user.hidden_submissions.push(@submission.id)
         end
-
+        
         if current_user.save
-            redirect_to hidden_path if params[:how] == "un" else newest_path
+            redirect_to params[:how] == "un" ? hidden_path : newest_path
         end
     end
 
     def hidden
-        @no_hidden_items = false
+        @no_such_items = false
         if current_user.hidden_submissions.count > 0
             @submissions = Submission.where(id: current_user.hidden_submissions)
         else
