@@ -16,4 +16,11 @@
             <%= f.submit "add comment" %>
         <% end %>
     </div>
+    <% if @comments %>
+        <div class="comments-container">
+            <% @comments.each do |comment| %>
+                <%= render partial: "shared/comment", locals: {comment: comment, is_nested: true} %>
+            <% end %>
+        </div>
+    <% end %>
 <%= render "shared/footer" %>

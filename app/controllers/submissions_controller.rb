@@ -18,7 +18,7 @@ class SubmissionsController < ApplicationController
         @submission.user = current_user
 
         @submission.is_showhn = @submission.title.start_with?("Show HN:")
-        @submission.is_askhn = @submission.title.start_with?("Ask HN:");
+        @submission.is_askhn = @submission.title.start_with?("Ask HN:") and (@submission.url.empty? or @submission.url.nil?);
         
         if @submission.save
             if @comment
@@ -46,6 +46,7 @@ class SubmissionsController < ApplicationController
         else
             @comment = Comment.new
             @submission = Submission.find(params[:id])
+            @comments = @submission.comments.where(parent_comment_id: nil)
             if @submission == nil
                 @no_such_item = true
             end

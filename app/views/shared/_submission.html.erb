@@ -24,23 +24,27 @@
             <p class="submission-title"><%= link_to submission.title, item_path(:id => submission.id) %></p>
         <% end %>
         <div class="submission-ops">
-            <p><%= "#{submission.upvotes} #{submission.upvotes > 1 ? "points" : "point"} by" %>
+            <p>
+                <%= "#{submission.upvotes} #{submission.upvotes > 1 ? "points" : "point"} by" %>
                 <%= link_to submission.user.username, user_path(:id => submission.user.username) %>
                 <%= link_to "#{time_ago_in_words(submission.created_at)} ago", item_path(:id => submission.id) %> |
 
                 <% if user_signed_in? and current_user.upvoted_submissions.include?(submission.id) %>
                     <%= link_to "unvote", vote_path(:id => submission.id) %> |
                 <% end %>
-
+                
                 <% if user_signed_in? and current_user.hidden_submissions.include?(submission.id) %>
                     <%= link_to "un-hide", hide_path(:id => submission.id, :how => "un") %> |
                 <% else %>
                     <%= link_to "hide", hide_path(:id => submission.id) %> |
                 <% end %>
+
                 <%= link_to "past", "#" %> |
 
-                <% if request.url != root_url %>
-                    <%= link_to "favourite", "#" %> |
+                <% if user_signed_in? and current_user.favorite_submissions.include?(submission.id) %>
+                    <%= link_to "unfavorite", fave_path(:id => submission.id, :how => "un") %> |
+                <% else %>
+                    <%= link_to "favourite", fave_path(:id => submission.id) %> |
                 <% end %>
 
                 <% if submission.comments.count == 0 %>

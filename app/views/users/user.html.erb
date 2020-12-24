@@ -89,7 +89,7 @@
                 
                 <div>
                     <div></div>
-                    <p><%= link_to "favorite submissions", "#" %> / <%= link_to "comments", "#" %> <em>(shared)</em></p>
+                    <p><%= link_to "favorite submissions", favorites_path(:id => @user.username) %> / <%= link_to "comments", favorites_path(:id => @user.username, :comment => "t") %> <em>(shared)</em></p>
                 </div>
 
                 <div>
@@ -98,7 +98,7 @@
             <% else %>
                 <div>
                     <div></div>
-                    <p><%= link_to "favorites", "#" %>
+                    <p><%= link_to "favorites", favorites_path(:id => @user.username) %>
                 </div>
             <% end %>
         <% end %>

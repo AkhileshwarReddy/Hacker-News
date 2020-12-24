@@ -1,0 +1,35 @@
+<% is_nested = false if local_assigns[:is_nested].nil? %>
+<div class="comment-container">
+    <% if user_signed_in? %>
+        <% if comment.user.id == current_user.id %>
+            <p class="current-user-item">*</p>
+        <% elsif !current_user.upvoted_comments.include?(comment.id) %>
+            <%= link_to vote_path(:id => comment.id, :how => "up", :comment => "t") do %>
+                <box-icon type='solid' color=  'gray' name='up-arrow'></box-icon>
+            <% end %>
+        <% else %>
+            <p>&nbsp;&nbsp;</p>
+        <% end %>
+    <% else %>
+            <%= link_to vote_path(:id => comment.id, :how => "up", :comment => "t") do %>
+                <box-icon type='solid' color=  'gray' name='up-arrow'></box-icon>
+            <% end %>
+    <% end %>
+    <div class="comment">
+        <p class="comment-details">
+            <%= link_to comment.user.username, user_path(:id => comment.user.username) %> 
+            <%= link_to "#{time_ago_in_words(comment.created_at)} ago", comment_path(:id => comment.id) %> | 
+            <%= link_to "parent", comment.parent_comment_id.nil? ? item_path(:id => comment.submission.id) : comment_path(:id => comment.id) %> | 
+            <span>on:<span> <%= link_to comment.submission.title, item_path(:id => comment.submission.id) %>
+        </p>
+        <p><%= comment.content %></p>
+        <% if is_nested %>
+            <%= link_to "reply", comment_path(:id => comment.id), class: "text-underline" %>
+            <% if Comment.exists?(parent_comment_id: comment.id) %>
+                <% Comment.where(parent_comment_id: comment.id).each do |child_comment| %>
+                    <%= render partial: "shared/comment", locals: {:comment => child_comment, :is_nested => is_nested} %>
+                <% end %>
+            <% end %>
+        <% end %>
+    </div>
+</div>

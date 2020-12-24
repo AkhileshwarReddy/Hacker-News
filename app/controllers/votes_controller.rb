@@ -16,11 +16,7 @@ class VotesController < ApplicationController
             @id = params[:id]
             @comment = params[:comment]
             @how = params[:how]
-            # if @comment == "t"
             @user = User.find(current_user.id)
-            # else
-            #     @user = User.find_by(username: @id)
-            # end
         end
 
         def vote_comment
@@ -50,8 +46,6 @@ class VotesController < ApplicationController
                 end
 
                 if @user.save
-                    
-                    
                     redirect_to request.referrer
                 end
             end
@@ -64,7 +58,6 @@ class VotesController < ApplicationController
             else
                 @submissions = Submission.newest.where(id: @user.upvoted_submissions)
             end
-            # render "votes/submissions"
         end
 
         def upvoted_comments

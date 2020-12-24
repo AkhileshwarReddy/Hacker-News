@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   get "/submitted", to: "submissions#submitted"
   get "/vote", to: "votes#vote"
   get "/upvoted", to: "votes#upvoted"
+  get "/fave", to: "favorites#index"
+  get "/favorites", to: "favorites#favorites"
+  get "/newcomments", to: "comments#new_comments"
+  get "/comment", to: "comments#show"
+  post "/reply", to: "comments#reply"
 end
