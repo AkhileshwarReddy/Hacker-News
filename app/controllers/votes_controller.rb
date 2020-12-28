@@ -8,7 +8,7 @@ class VotesController < ApplicationController
 
     def upvoted
         @comment == "t" ? upvoted_comments : upvoted_submissions
-        render @comment == "t" ? "votes/comments" : "votes/submissions"
+        # render @comment == "t" ? "votes/comments" : "votes/submissions"
     end
 
     private
@@ -58,10 +58,11 @@ class VotesController < ApplicationController
             else
                 @submissions = Submission.newest.where(id: @user.upvoted_submissions)
             end
+            render "votes/submissions"
         end
 
         def upvoted_comments
-            # @comments = Comment.newest.where(id: @user.upvoted_comments)
-            # render "votes/comments"
+            @comments = Comment.order(:created_at).where(id: @user.upvoted_comments)
+            render "votes/comments"
         end
 end

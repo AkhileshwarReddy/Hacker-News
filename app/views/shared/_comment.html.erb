@@ -17,9 +17,24 @@
     <% end %>
     <div class="comment">
         <p class="comment-details">
+            <% if request.url.start_with?(threads_url) %>
+                <span><%= comment.upvotes %> <%= comment.upvotes == 1 ? "point" : "points" %> by</span>
+            <% end %>
             <%= link_to comment.user.username, user_path(:id => comment.user.username) %> 
             <%= link_to "#{time_ago_in_words(comment.created_at)} ago", comment_path(:id => comment.id) %> | 
             <%= link_to "parent", comment.parent_comment_id.nil? ? item_path(:id => comment.submission.id) : comment_path(:id => comment.id) %> | 
+            <% if request.url.start_with?(item_url) or request.url.start_with?(comment_url) %>
+                <% if user_signed_in? and current_user.upvoted_comments.include?(comment.id) %>
+                    <%= link_to "unvote", vote_path(:id => comment.id, :comment => "t", :how => "un") %> |
+                <% end %>
+            <% end %>
+            <% if request.url.start_with?(item_url) or request.url.start_with?(comment_url) %>
+                <% if user_signed_in? and current_user.favorite_comments.include?(comment.id) %>
+                    <%= link_to "unfavorite", fave_path(:id => comment.id, :comment => "t", :how => "un") %> |
+                <% else %>
+                    <%= link_to "favorite", fave_path(:id => comment.id, :comment => "t") %> |
+                <% end %>
+            <% end %>
             <span>on:<span> <%= link_to comment.submission.title, item_path(:id => comment.submission.id) %>
         </p>
         <p><%= comment.content %></p>

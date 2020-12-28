@@ -29,7 +29,8 @@ class CommentsController < ApplicationController
     end
 
     def threads
-        @comments = Comment.threads(current_user)
+        Comment.threads(current_user).then(comments => @comments = comments
+        binding.pry
     end
 
     private

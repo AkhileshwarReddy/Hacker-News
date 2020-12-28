@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   get "/newcomments", to: "comments#new_comments"
   get "/comment", to: "comments#show"
   post "/reply", to: "comments#reply"
+  get "/past", to: "submissions#past"
+  get "/threads", to: "comments#threads"
 end
