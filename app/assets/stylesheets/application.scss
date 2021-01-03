@@ -116,6 +116,15 @@ footer {
     color: white;
 }
 
+.search form {
+    display: flex;
+    align-items: center;
+}
+
+.search form #query {
+    padding: 0;
+}
+
 @media (max-width: 768px) {
     .container {
         margin: 0;
@@ -125,5 +134,10 @@ footer {
     .nav-items {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .search form {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

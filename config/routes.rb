@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   root to: "submissions#newest"
@@ -25,4 +26,5 @@ Rails.application.routes.draw do
   post "/reply", to: "comments#reply"
   get "/past", to: "submissions#past"
   get "/threads", to: "comments#threads"
+  get "/search", to: "search#search"
 end

@@ -1,19 +1,21 @@
 <% is_nested = false if local_assigns[:is_nested].nil? %>
 <div class="comment-container">
-    <% if user_signed_in? %>
-        <% if comment.user.id == current_user.id %>
-            <p class="current-user-item">*</p>
-        <% elsif !current_user.upvoted_comments.include?(comment.id) %>
-            <%= link_to vote_path(:id => comment.id, :how => "up", :comment => "t") do %>
-                <box-icon type='solid' color=  'gray' name='up-arrow'></box-icon>
+    <% if !request.url.start_with?(search_url) %>
+        <% if user_signed_in? %>
+            <% if comment.user.id == current_user.id %>
+                <p class="current-user-item">*</p>
+            <% elsif !current_user.upvoted_comments.include?(comment.id) %>
+                <%= link_to vote_path(:id => comment.id, :how => "up", :comment => "t") do %>
+                    <box-icon type='solid' color=  'gray' name='up-arrow'></box-icon>
+                <% end %>
+            <% else %>
+                <p>&nbsp;&nbsp;</p>
             <% end %>
         <% else %>
-            <p>&nbsp;&nbsp;</p>
+                <%= link_to vote_path(:id => comment.id, :how => "up", :comment => "t") do %>
+                    <box-icon type='solid' color=  'gray' name='up-arrow'></box-icon>
+                <% end %>
         <% end %>
-    <% else %>
-            <%= link_to vote_path(:id => comment.id, :how => "up", :comment => "t") do %>
-                <box-icon type='solid' color=  'gray' name='up-arrow'></box-icon>
-            <% end %>
     <% end %>
     <div class="comment">
         <p class="comment-details">
