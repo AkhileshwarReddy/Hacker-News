@@ -1,7 +1,7 @@
 include CommentsHelper
 
 class Comment < ApplicationRecord
-  searchkick
+  # searchkick
   belongs_to :user
   belongs_to :submission
 
